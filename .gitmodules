@@ -1,0 +1,3 @@
+[submodule "RUDY_app"]
+	path = RUDY_app
+	url = https://github.com/Hawkguye/RUDY_app.git
