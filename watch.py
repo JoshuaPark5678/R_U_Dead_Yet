@@ -32,9 +32,9 @@ sio = socketio_client.Client()
 def connect_to_flask():
     try:
         sio.connect(FLASK_SERVER)
-        print(f"✅ Connected to Flask server at {FLASK_SERVER}")
+        print(f"Connected to Flask server at {FLASK_SERVER}")
     except Exception as e:
-        print(f"❌ Could not connect to Flask: {e}")
+        print(f"Could not connect to Flask: {e}")
         print("   Make sure app.py is running first.")
 
 def get_hr_values(window: dict) -> list:

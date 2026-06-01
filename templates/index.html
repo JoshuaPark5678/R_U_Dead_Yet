@@ -6,56 +6,70 @@
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
-    <h1 id="title">RUDY</h1>
+    <div id="landing">
+      <img
+        src="/static/icon.png"
+        alt="RUDY"
+        onclick="startApp()"
+        style="cursor: pointer"
+      />
+    </div>
 
-    <section class="box">
-      <div class="flex-container-top">
-        <div class="container-top-1">
-          <p class="bpm-current" style="margin-top: 5px;">
-            Current BPM: <span id="bpm-current" class="bpm-current">--</span>
-          </p>
-          <p style="margin-bottom: 5px;">Avg BPM: <span id="bpm-avg">--</span></p>
-          <p style="margin-bottom: 5px; margin-top: 5px;">Peak BPM: <span id="bpm-peak">--</span></p>
-        </div>
-        <div class="container-top-2">
-          <p id="activity-status" class="activity-status">--</p>
-        </div>
+    <div id="main-app" style="display: none">
+      <div id="title-flex">
+        <img src="/static/icon.png" alt="" class="icon" />
+        <h1 id="title">RUDY Monitor</h1>
       </div>
-    </section>
 
-    <section class="box">
-      <div class="flex-container-mid">
-        <div style="flex: 7; min-width: 0; height: 450px">
-          <canvas id="bpm-chart"></canvas>
+      <section class="box">
+        <div class="flex-container-top">
+          <div class="container-top-1">
+            <p class="bpm-current">
+              Current BPM: <span id="bpm-current" class="bpm-current">--</span>
+            </p>
+            <p>Avg BPM: <span id="bpm-avg">--</span></p>
+            <p>Peak BPM: <span id="bpm-peak">--</span></p>
+          </div>
+          <div class="container-top-2">
+            <p id="activity-status" class="activity-status">--</p>
+          </div>
         </div>
-        <div
-          style="
-            flex: 3;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
-            height: 450px;
-          "
-        >
+      </section>
+
+      <section class="box">
+        <div class="flex-container-mid">
+          <div style="flex: 7; min-width: 0; height: 450px">
+            <canvas id="bpm-chart"></canvas>
+          </div>
           <div
-            id="chat-log"
             style="
-              flex: 1;
-              overflow-y: auto;
+              flex: 3;
+              min-width: 0;
               display: flex;
               flex-direction: column;
-              gap: 8px;
-              padding: 8px;
+              height: 450px;
             "
-          ></div>
+          >
+            <div
+              id="chat-log"
+              style="
+                flex: 1;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+                padding: 8px;
+              "
+            ></div>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="box">
-      <h2>AI Analysis</h2>
-      <p id="ai-output">Waiting...</p>
-    </section>
+      <section class="box">
+        <h2>AI Analysis</h2>
+        <p id="ai-output">Waiting...</p>
+      </section>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>

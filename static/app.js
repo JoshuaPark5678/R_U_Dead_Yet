@@ -27,12 +27,18 @@ const chart = new Chart(ctx, {
 function updateStats() {
     if (!readings.length) return;
     const bpms = readings.map(r => r.bpm);
-    document.getElementById("bpm-current").textContent = bpms.at(-1);
-    document.getElementById("bpm-avg").textContent = Math.round(bpms.reduce((a, b) => a + b, 0) / bpms.length);
-    document.getElementById("bpm-peak").textContent = Math.max(...bpms);
+    const currentEl = document.getElementById("bpm-current");
+    const avgEl = document.getElementById("bpm-avg");
+    const peakEl = document.getElementById("bpm-peak");
+    const activityEl = document.getElementById("activity-status");
+    if (!currentEl || !avgEl || !peakEl || !activityEl) return;
+
+    currentEl.textContent = bpms.at(-1);
+    avgEl.textContent = Math.round(bpms.reduce((a, b) => a + b, 0) / bpms.length);
+    peakEl.textContent = Math.max(...bpms);
     const activity = readings.at(-1)?.activity;
     if (activity != null && activity !== "") {
-        document.getElementById("activity-status").textContent = activity;
+        activityEl.textContent = activity;
     }
 }
 
@@ -69,6 +75,18 @@ function addChatMessage(user, ai) {
     // Auto-scroll to bottom
     log.scrollTop = log.scrollHeight;
 }
+
+function startApp() {
+    const landing = document.getElementById("landing");
+    landing.style.opacity = "0";
+    setTimeout(() => {
+        landing.style.display = "none";
+        document.getElementById("main-app").style.display = "block";
+        updateStats();
+    }, 500);
+}
+
+window.startApp = startApp;
 
 // SocketIO
 const socket = io();
