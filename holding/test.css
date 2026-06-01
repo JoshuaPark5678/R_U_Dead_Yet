@@ -1,0 +1,59 @@
+/* Initialize Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+#title{
+    margin-left: 15px;
+    font-size: 40px;
+}
+
+body{
+    font-family: 'Google-Sans', sans-serif;
+    background-image: url(/holding/bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.box{
+    border: 1px solid #FFFFFF;
+    border-radius: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    background-color: #FFFFFF;
+    padding-left: 15px;
+}
+
+.bpm-current{
+    font-size: 35px;
+    margin-bottom: -5px;
+}
+
+.container-top-1{
+    font-weight: bold;
+}
+
+.container-top-2{
+    font-weight: bold;
+}
+
+.flex-container-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 10px 0;
+}
+
+.flex-container-mid {
+    display: flex;
+    gap: 1rem;
+}
+
+.flex-container-mid canvas {
+    flex: 7;
+    min-width: 0;
+}
+
+.flex-container-mid p {
+    flex: 3;
+    min-width: 0;
+}

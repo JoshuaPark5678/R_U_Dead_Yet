@@ -1,0 +1,76 @@
+/* Initialize Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&display=swap');
+
+@font-face {
+    font-family: 'OCR-A';
+    src: url('/static/font/OCRAEXT.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#title{
+    font-family: 'OCR-A', monospace;
+    margin-left: 15px;
+    font-size: 40px;
+    color: #000000;
+}
+
+body{
+    font-family: 'Google-Sans', sans-serif;
+    background-image: url(/static/bg.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.box{
+    border: 1px solid #FFFFFF;
+    border-radius: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    background-color: #FFFFFF;
+    padding-left: 15px;
+}
+
+.bpm-current{
+    font-size: 35px;
+    margin-bottom: -5px;
+}
+
+.activity-status {
+    font-size: 35px;
+    color: #ff746c;
+    margin: 0;
+}
+
+.container-top-1 {
+    font-weight: bold;
+}
+
+.container-top-2 {
+    font-weight: bold;
+    text-align: right;
+    margin-left: auto;
+}
+
+.flex-container-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px 10px 0;
+}
+
+.flex-container-mid {
+    display: flex;
+    gap: 1rem;
+}
+
+.flex-container-mid canvas {
+    flex: 7;
+    min-width: 0;
+}
+
+.flex-container-mid p {
+    flex: 3;
+    min-width: 0;
+}
