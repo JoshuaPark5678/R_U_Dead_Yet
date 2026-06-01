@@ -4,10 +4,34 @@ import time
 import threading
 import os
 from datetime import datetime
+from pathlib import Path
 from openai import OpenAI
 import socketio as socketio_client
 
-WATCH_IP = "172.20.10.2"
+
+def load_dotenv(dotenv_path: str = ".env") -> None:
+    try:
+        from dotenv import load_dotenv as _load_dotenv
+        _load_dotenv(dotenv_path)
+    except ImportError:
+        path = Path(dotenv_path)
+        if not path.is_file():
+            return
+        with path.open("r", encoding="utf-8") as f:
+            for line in f:
+                line = line.strip()
+                if not line or line.startswith("#") or "=" not in line:
+                    continue
+                key, value = line.split("=", 1)
+                key = key.strip()
+                value = value.strip().strip('"').strip("'")
+                if key and key not in os.environ:
+                    os.environ[key] = value
+
+
+load_dotenv()
+
+WATCH_IP = "192.168.46.228"
 PORT = 9876
 ANALYSIS_INTERVAL = 30
 FLASK_SERVER = "http://localhost:5000"
@@ -20,7 +44,8 @@ if not groq_api_key:
         "Example (PowerShell): $env:GROQ_API_KEY='your-api-key-here'"
     )
 
-client = OpenAI(base_url="https://api.groq.com/openai/v1", api_key=groq_api_key)
+#client = OpenAI(base_url="https://api.groq.com/openai/v1", api_key=groq_api_key)
+client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
 
 MOVEMENT_STD_THRESHOLD = 0.15
 MOVEMENT_PEAK_THRESHOLD = 0.9
@@ -168,7 +193,8 @@ def analyze(windows: list, minute: int):
     )
     try:
         response = client.chat.completions.create(
-            model="llama-3.1-8b-instant",
+            #model="llama-3.1-8b-instant",
+            model="phi3:mini",
             messages=[
                 {"role": "system", "content": DISPLAY_SYSTEM_PROMPT},
                 {"role": "user",   "content": user_msg}
